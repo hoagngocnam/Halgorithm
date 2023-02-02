@@ -3,17 +3,10 @@
 namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Modules\Admin\Http\Requests\ProductRequest;
-use Modules\Admin\Repositories\{
-	CategoryRepository,
-	ProductRepository,
-	MultimediaRepository,
-};
+use Modules\Admin\Repositories\{CategoryRepository, MultimediaRepository, ProductRepository,};
 
 class MultimediaController extends Controller
 {

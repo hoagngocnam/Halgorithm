@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Admin\Repositories;
+namespace Modules\Admin\Http\Repositories;
 
 use App\Models\Account;
 

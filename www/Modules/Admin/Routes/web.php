@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('admin')->middleware([
-    'authenticate:admin',
+//    'authenticate:admin',
     'view_data',
     'handle_breadcrumb',
     'notification_message'
@@ -34,7 +34,7 @@ Route::prefix('admin')->middleware([
 
     // Màn hình Account
     Route::prefix('account')->name('account.')->group(function () {
-        Route::get('', 'AccountController@index')->name('index');
+        Route::get('list', 'AccountController@list')->name('list');
         Route::get('{account_id}/information', 'AccountController@information')->name('information');
         Route::match(['get', 'post'], 'add', 'AccountController@add')->name('add');
         Route::match(['get', 'post'], 'update/{account_id}', 'AccountController@update')->name('update');

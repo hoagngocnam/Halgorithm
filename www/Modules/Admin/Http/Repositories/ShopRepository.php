@@ -1,16 +1,16 @@
 <?php
 
-namespace Modules\Admin\Repositories;
+namespace Modules\Admin\Http\Repositories;
 
-use App\Models\Store;
+use App\Models\Shop;
 use Illuminate\Support\Facades\DB;
-use Modules\Admin\Repositories\Interfaces\StoreRepositoryInterface;
+use Modules\Admin\Http\Repositories\Interfaces\ShopRepositoryInterface;
 
-class StoreRepository extends BaseRepository implements StoreRepositoryInterface
+class ShopRepository extends BaseRepository implements ShopRepositoryInterface
 {
     protected $model;
 
-    public function __construct(Store $model)
+    public function __construct(Shop $model)
     {
         $this->model = $model;
     }

@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Admin\Exports\AccountsExport;
 use Modules\Admin\Http\Requests\AccountRequest;
-use Modules\Admin\Repositories\AccountRepository;
+use Modules\Admin\Http\Services\AccountService;
 
 class AccountController extends Controller
 {
-    protected AccountRepository $accountRepository;
+    protected AccountService $accountService;
 
-    public function __construct(AccountRepository $accountRepository)
+    public function __construct(AccountService $accountService)
     {
-        $this->accountRepository = $accountRepository;
+        $this->accountService = $accountService;
     }
 
     /*
@@ -30,9 +30,9 @@ class AccountController extends Controller
     public function index(AccountRequest $request)
     {
         $parameters = $request->only(['mail_adr', 'full_name']);
-        // $accounts = $this->accountRepository->searchElasticsearch($parameters);
+        // $accounts = $this->accountService->searchElasticsearch($parameters);
         // dd($accounts);
-        $accounts = $this->accountRepository->paginate($parameters);
+        $accounts = $this->accountService->paginate($parameters);
 
         return view('admin::account.index', compact(
             'parameters',
@@ -51,7 +51,7 @@ class AccountController extends Controller
             $password = $this->generatePassword();
             $params['password'] = Hash::make($password);
             try {
-                $account = $this->accountRepository->add($params);
+                $account = $this->accountService->add($params);
                 $notification = [
                     'status' => NOTIFICATION['success'],
                     'title' => 'Success !'
@@ -87,7 +87,7 @@ class AccountController extends Controller
     public function delete(Request $request, int $account_id)
     {
         try {
-            $this->accountRepository->physicalDelete($account_id);
+            $this->accountService->physicalDelete($account_id);
             notification_message_settings(NOTIFICATION['success'], 'Success !');
         } catch (Exception $exception) {
             notification_message_settings(NOTIFICATION['danger'], 'Failure !');
@@ -111,14 +111,14 @@ class AccountController extends Controller
 
     public function update(StoreFormRequest $request, int $account_id)
     {
-        $account = $this->accountRepository->first($account_id);
+        $account = $this->accountService->first($account_id);
         if ($request->isMethod('post')) {
             $params = $request->only(['mail_adr', 'first_name', 'last_name']);
             $params['role'] = 1;
             $password = $this->generatePassword();
             $params['password'] = Hash::make($password);
             try {
-                $result = $this->accountRepository->update($account_id, $params);
+                $result = $this->accountService->update($account_id, $params);
                 notification_message_settings(NOTIFICATION['success'], 'Success !', $account->mail_adr);
                 //                $account->notify(new NotificationAccountVerification($password));
                 return redirect()->route('admin.account.index');

@@ -6,14 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorechapterRequest;
 use App\Http\Requests\UpdatechapterRequest;
 use App\Models\chapter;
-use Modules\Admin\Repositories\Interfaces\{
-	CategoryRepositoryInterface,
-	ProductRepositoryInterface,
-	ChapterRepositoryInterface,
-
-};
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Modules\Admin\Http\Repositories\Interfaces\{CategoryRepositoryInterface,
+    ChapterRepositoryInterface,
+    ProductRepositoryInterface,};
 
 class ChapterController extends Controller
 {

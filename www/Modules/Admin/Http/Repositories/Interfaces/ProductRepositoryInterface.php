@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Admin\Repositories\Interfaces;
+namespace Modules\Admin\Http\Repositories\Interfaces;
 
 interface ProductRepositoryInterface
 {

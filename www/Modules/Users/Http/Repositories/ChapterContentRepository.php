@@ -3,7 +3,7 @@
 namespace Modules\Users\Repositories;
 
 use App\Models\ChapterContent;
-use Modules\Admin\Repositories\Interfaces\ChapterRepositoryInterface;
+use Modules\Admin\Http\Repositories\Interfaces\ChapterRepositoryInterface;
 
 class ChapterContentRepository extends BaseRepository implements ChapterRepositoryInterface
 {

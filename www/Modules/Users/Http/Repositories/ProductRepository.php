@@ -2,12 +2,9 @@
 
 namespace Modules\Users\Repositories;
 
-use App\Models\{
-    Product,
-    CategoryProduct
-};
-use Modules\Admin\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Models\{CategoryProduct, Product};
 use Exception;
+use Modules\Admin\Http\Repositories\Interfaces\ProductRepositoryInterface;
 
 class ProductRepository extends BaseRepository implements ProductRepositoryInterface
 {

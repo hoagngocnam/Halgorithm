@@ -5,17 +5,11 @@ namespace Modules\Stores\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
 use App\Models\Product;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Modules\Admin\Http\Requests\ProductRequest;
-use Modules\Admin\Repositories\{
-    CategoryRepository,
-    ChapterRepository,
-    ProductRepository,
-};
+use Modules\Admin\Repositories\{CategoryRepository, ChapterRepository, ProductRepository,};
 
 class ProductController extends Controller
 {

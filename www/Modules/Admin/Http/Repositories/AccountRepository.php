@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Admin\Repositories;
+namespace Modules\Admin\Http\Repositories;
 
 use App\Models\Account;
-use Modules\Admin\Repositories\Interfaces\AccountRepositoryInterface;
+use Modules\Admin\Http\Repositories\Interfaces\AccountRepositoryInterface;
 
 class AccountRepository extends BaseRepository implements AccountRepositoryInterface
 {

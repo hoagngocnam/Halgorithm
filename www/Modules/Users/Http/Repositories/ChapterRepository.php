@@ -2,12 +2,9 @@
 
 namespace Modules\Users\Repositories;
 
-use App\Models\{
-    Chapter,
-    ChapterContent
-};
-use Modules\Admin\Repositories\Interfaces\ChapterRepositoryInterface;
+use App\Models\{Chapter, ChapterContent};
 use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\Admin\Http\Repositories\Interfaces\ChapterRepositoryInterface;
 
 class ChapterRepository extends BaseRepository implements ChapterRepositoryInterface
 {

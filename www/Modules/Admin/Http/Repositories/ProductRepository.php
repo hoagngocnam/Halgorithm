@@ -1,12 +1,9 @@
 <?php
 
-namespace Modules\Admin\Repositories;
+namespace Modules\Admin\Http\Repositories;
 
-use App\Models\{
-    Product
-};
-use Modules\Admin\Repositories\Interfaces\ProductRepositoryInterface;
-use Exception;
+use App\Models\{Product};
+use Modules\Admin\Http\Repositories\Interfaces\ProductRepositoryInterface;
 
 class ProductRepository extends BaseRepository implements ProductRepositoryInterface
 {

@@ -4,8 +4,8 @@ namespace Modules\Users\Repositories;
 
 use App\Exceptions\AccountException;
 use App\Models\LoginHistory;
-use Modules\Admin\Repositories\Interfaces\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Modules\Admin\Http\Repositories\Interfaces\BaseRepositoryInterface;
 
 class BaseRepository implements BaseRepositoryInterface
 {
