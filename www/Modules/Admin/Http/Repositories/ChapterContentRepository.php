@@ -1,0 +1,16 @@
+<?php
+
+namespace Modules\Admin\Repositories;
+
+use App\Models\ChapterContent;
+use Modules\Admin\Repositories\Interfaces\ChapterRepositoryInterface;
+
+class ChapterContentRepository extends BaseRepository implements ChapterRepositoryInterface
+{
+    protected $model;
+
+    public function __construct(ChapterContent $model)
+    {
+        $this->model = $model;
+    }
+}
