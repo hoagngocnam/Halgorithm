@@ -3,7 +3,7 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li>
-                <a class="active-menu" href="{{ route('admin.account.index') }}">
+                <a class="active-menu" href="{{ route('admin.account.list') }}">
                     <i class="fa fa-users"></i>
                     {{ __('sidebar.account') }}
                 </a>

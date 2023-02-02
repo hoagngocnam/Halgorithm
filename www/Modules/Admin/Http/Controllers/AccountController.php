@@ -27,14 +27,14 @@ class AccountController extends Controller
     /*
      * Màn hình danh sách tài khoản
      */
-    public function index(AccountRequest $request)
+    public function list(AccountRequest $request)
     {
         $parameters = $request->only(['mail_adr', 'full_name']);
         // $accounts = $this->accountService->searchElasticsearch($parameters);
         // dd($accounts);
         $accounts = $this->accountService->paginate($parameters);
 
-        return view('admin::account.index', compact(
+        return view('admin::account.list', compact(
             'parameters',
             'accounts',
         ));
@@ -56,7 +56,7 @@ class AccountController extends Controller
                     'status' => NOTIFICATION['success'],
                     'title' => 'Success !'
                 ];
-                $targetRoute = redirect()->route('admin.account.index');
+                $targetRoute = redirect()->route('admin.account.list');
             } catch (Exception $exception) {
                 $notification = [
                     'status' => NOTIFICATION['danger'],
@@ -121,7 +121,7 @@ class AccountController extends Controller
                 $result = $this->accountService->update($account_id, $params);
                 notification_message_settings(NOTIFICATION['success'], 'Success !', $account->mail_adr);
                 //                $account->notify(new NotificationAccountVerification($password));
-                return redirect()->route('admin.account.index');
+                return redirect()->route('admin.account.list');
             } catch (Exception $exception) {
                 notification_message_settings(NOTIFICATION['danger'], 'Failure !', $params['mail_adr']);
                 return back();

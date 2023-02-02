@@ -21,31 +21,31 @@ class HandleBreadcrumb
         $breadcrumb = [];
 
         switch ($nameRoute) {
-            case "admin.account.index":
+            case "admin.account.list":
                 $breadcrumb = [
                     route('admin.dashboard') => 'Home',
-                    route('admin.account.index') => 'Account',
+                    route('admin.account.list') => 'Account',
                     null => 'Add'
                 ];
                 break;
             case "admin.account.add":
                 $breadcrumb = [
                     route('admin.dashboard') => 'Home',
-                    route('admin.account.index') => 'Account',
+                    route('admin.account.list') => 'Account',
                     null => 'Add'
                 ];
                 break;
             case "admin.category.index":
                 $breadcrumb = [
                     route('admin.dashboard') => 'home',
-                    route('admin.account.index') => 'category',
+                    route('admin.account.list') => 'category',
                     null => 'list'
                 ];
                 break;
             case "admin.category.add":
                 $breadcrumb = [
                     route('admin.dashboard') => 'home',
-                    route('admin.account.index') => 'category',
+                    route('admin.account.list') => 'category',
                     null => 'add'
                 ];
                 break;

@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="m-t-50">
-                    <a href="{{ route('admin.account.index') }}" class="btn btn-danger font-weight-bold">
+                    <a href="{{ route('admin.account.list') }}" class="btn btn-danger font-weight-bold">
                         <i class="feather icon-rotate-ccw mr-2"></i>Quay lại
                     </a>
                     <button type="submit" class="btn btn-success font-weight-bold fa-pull-right">

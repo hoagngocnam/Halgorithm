@@ -7,7 +7,7 @@
             <hr>
         </div>
         <div class="card-body">
-            <form class="search-form" action="{{ route('admin.account.index') }}" method="GET"
+            <form class="search-form" action="{{ route('admin.account.list') }}" method="GET"
                   onsubmit="return searchForm()">
                 <div class="row">
                     <div class="row-input-group col-md-6 form-group">

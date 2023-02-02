@@ -29,7 +29,7 @@ class AuthenticateController extends Controller
             $credentials = $request->only(['mail_adr', 'password']);
             if (Auth::guard('admin')->attempt($credentials)) {
                 // $request->session()->regenerate();
-                return redirect()->route('admin.account.index');
+                return redirect()->route('admin.account.list');
             }
             $checkLogin = true;
             $mailAdr = $credentials['mail_adr'];
