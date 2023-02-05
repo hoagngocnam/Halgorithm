@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Users\Repositories;
+namespace Modules\Users\Http\Repositories;
 
 use App\Models\Account;
 use Modules\Admin\Http\Repositories\Interfaces\AccountRepositoryInterface;

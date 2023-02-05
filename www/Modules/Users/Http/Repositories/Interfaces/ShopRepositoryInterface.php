@@ -2,7 +2,7 @@
 
 namespace Modules\Users\Http\Repositories\Interfaces;
 
-interface AccountRepositoryInterface
+interface ShopRepositoryInterface
 {
 }
 

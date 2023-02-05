@@ -19,13 +19,13 @@ class ShopRepository extends BaseRepository implements ShopRepositoryInterface
     {
         $query = $this->model::query()
             ->select(
-                'stores.id',
-                'stores.name',
-                'stores.background',
+                'shop.id',
+                'shop.name',
+                'shop.background',
                 DB::raw('CONCAT(first_name, " ", last_name) as full_name'),
             )
             ->join('accounts', function ($join) {
-                $join->on('stores.account_id', '=', 'accounts.id');
+                $join->on('shop.account_id', '=', 'accounts.id');
                 if (!empty($params['full_name'])) {
                     $join->where('name', 'like', '%' . $params['name'] . '%');
                     $join->whereRaw('CONCAT(first_name, " ", last_name) like "%?%"', [200]);

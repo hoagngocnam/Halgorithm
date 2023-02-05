@@ -4,8 +4,8 @@ namespace Modules\Users\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Users\Repositories\CategoryRepository;
-use Modules\Users\Repositories\ProductRepository;
+use Modules\Users\Http\Repositories\CategoryRepository;
+use Modules\Users\Http\Repositories\ProductRepository;
 
 class CartController extends Controller
 {
@@ -130,7 +130,7 @@ class CartController extends Controller
         $vnp_Url = env('VNP_URL') . "?" . $query;
         $vnp_HashSecret = env('VNP_HASHSECRET');
         if (isset($vnp_HashSecret)) {
-            $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
+            $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret); //
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
         $returnData = array(

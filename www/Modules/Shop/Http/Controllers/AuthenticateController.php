@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Stores\Http\Controllers;
+namespace Modules\Shop\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;

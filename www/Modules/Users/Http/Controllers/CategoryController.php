@@ -3,8 +3,8 @@
 namespace Modules\Users\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Modules\Users\Repositories\CategoryRepository;
-use Modules\Users\Repositories\ProductRepository;
+use Modules\Users\Http\Repositories\CategoryRepository;
+use Modules\Users\Http\Repositories\ProductRepository;
 
 class CategoryController extends Controller
 {

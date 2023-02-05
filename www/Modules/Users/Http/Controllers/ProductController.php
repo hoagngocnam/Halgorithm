@@ -4,8 +4,8 @@ namespace Modules\Users\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Users\Repositories\CategoryRepository;
-use Modules\Users\Repositories\ProductRepository;
+use Modules\Users\Http\Repositories\CategoryRepository;
+use Modules\Users\Http\Repositories\ProductRepository;
 
 class ProductController extends Controller
 {

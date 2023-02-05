@@ -43,12 +43,12 @@ Route::prefix('admin')->middleware([
     });
 
     // Màn hình Stores
-    Route::prefix('stores')->name('stores.')->group(function () {
-        Route::get('', 'StoresController@index')->name('index');
-        Route::get('{store_id}/information', 'StoresController@information')->name('information');
-        Route::match(['get', 'post'], 'add', 'StoresController@add')->name('add');
-        Route::match(['get', 'post'], 'update/{store_id}', 'StoresController@update')->name('update');
-        Route::get('delete/{store_id}', 'StoresController@delete')->name('delete');
+    Route::prefix('shop')->name('shop.')->group(function () {
+        Route::get('list', 'ShopController@list')->name('list');
+        Route::get('{shop_id}/information', 'ShopController@information')->name('information');
+        Route::match(['get', 'post'], 'add', 'ShopController@add')->name('add');
+        Route::match(['get', 'post'], 'update/{shop_id}', 'ShopController@update')->name('update');
+        Route::get('delete/{shop_id}', 'ShopController@delete')->name('delete');
     });
 
     // Màn hình Category

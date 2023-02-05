@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Users\Repositories\Interfaces;
+namespace Modules\Users\Http\Repositories\Interfaces;
 
 interface CategoryRepositoryInterface
 {

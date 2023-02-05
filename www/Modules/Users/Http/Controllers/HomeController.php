@@ -5,20 +5,16 @@ namespace Modules\Users\Http\Controllers;
 use App\Jobs\SendMailReminder;
 use App\Models\Category;
 use Illuminate\Routing\Controller;
-use Modules\Users\Repositories\{
-    StoreRepository,
-    CategoryRepository,
-    ProductRepository
-};
+use Modules\Users\Http\Repositories\{CategoryRepository, ProductRepository, ShopRepository};
 
 class HomeController extends Controller
 {
-    private StoreRepository $storeRepository;
+    private ShopRepository $storeRepository;
     private CategoryRepository $categoryRepository;
     private ProductRepository $productRepository;
 
     public function __construct(
-        StoreRepository $storeRepository,
+        ShopRepository     $storeRepository,
         CategoryRepository $categoryRepository,
         ProductRepository  $productRepository
     ) {

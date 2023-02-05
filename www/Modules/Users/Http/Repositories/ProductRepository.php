@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Users\Repositories;
+namespace Modules\Users\Http\Repositories;
 
 use App\Models\{CategoryProduct, Product};
 use Exception;
