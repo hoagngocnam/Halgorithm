@@ -42,30 +42,30 @@ Route::prefix('admin')->middleware([
         Route::get('export', 'AccountController@export')->name('export');
     });
 
-    // Màn hình Stores
+    // Màn hình Cửa hàng
     Route::prefix('shop')->name('shop.')->group(function () {
         Route::get('list', 'ShopController@list')->name('list');
         Route::get('{shop_id}/information', 'ShopController@information')->name('information');
-        Route::match(['get', 'post'], 'add', 'ShopController@add')->name('add');
-        Route::match(['get', 'post'], 'update/{shop_id}', 'ShopController@update')->name('update');
-        Route::get('delete/{shop_id}', 'ShopController@delete')->name('delete');
+        Route::get('add', 'ShopController@formAdd')->name('add');
+        Route::post('add', 'ShopController@handleAdd')->name('add');
+        Route::get('update/{shop_id}', 'ShopController@formUpdate')->name('update')->where('shop_id', '[0-9]+');
+        Route::post('update/{shop_id}', 'ShopController@handleUpdate')->name('update')->where('shop_id', '[0-9]+');
+        Route::get('delete/{shop_id}', 'ShopController@delete')->name('delete')->where('shop_id', '[0-9]+');
     });
 
     // Màn hình Category
     Route::prefix('category')->name('category.')->group(function () {
-        Route::get('', 'CategoryController@index')->name('index');
-        Route::match(['get', 'post'], 'add', 'CategoryController@add')->name('add');
-        Route::match(['get', 'post'], 'update/{id}', 'CategoryController@update')->name('update');
-        Route::match(['get', 'post'], 'delete/{id}', 'CategoryController@delete')->name('delete');
-        Route::prefix('{category_id}/product')->name('product.')->group(function () {
-            Route::match(['get', 'post'], 'add', 'CategoryController@addNewProducts')->name('add');
-            Route::get('', 'CategoryController@listOfProducts')->name('list');
-        });
+        Route::get('list', 'CategoryController@list')->name('list');
+        Route::get('add', 'CategoryController@formAdd')->name('add');
+        Route::post('add', 'CategoryController@handleAdd')->name('add');
+        Route::get('update/{category_id}', 'CategoryController@formUpdate')->name('update')->where('id', '[0-9]+');
+        Route::post('update/{category_id}', 'CategoryController@handleUpdate')->name('update')->where('id', '[0-9]+');
+        Route::get('delete/{category_id}', 'CategoryController@delete')->name('delete');
     });
 
     // Màn hình Product
     Route::prefix('product')->name('product.')->group(function () {
-        Route::get('', 'ProductController@index')->name('index');
+        Route::get('list', 'ProductController@list')->name('list');
         Route::match(['get', 'post'], 'add', 'ProductController@add')->name('add');
         Route::match(['get', 'post'], '{product_id}/update', 'ProductController@update')->name('update');
         Route::get('{product_id}/delete', 'ProductController@delete')->name('delete');

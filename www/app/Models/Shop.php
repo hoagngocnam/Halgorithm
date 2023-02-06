@@ -13,5 +13,17 @@ class Shop extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
     public $timestamps = true;
+    protected $fillable = ['name'];
 
+    public function owner()
+    {
+        return $this->hasOneThrough(
+            Account::class,
+            AccountShop::class,
+            'shop_id',
+            'id',
+            'id',
+            'account_id'
+        )->where('account_shop.role_id', 1);
+    }
 }

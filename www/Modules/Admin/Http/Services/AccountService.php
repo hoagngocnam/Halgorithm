@@ -21,4 +21,9 @@ class AccountService
     {
         return $this->accountRepository->paginate();
     }
+
+    public function list(array $conditions = [])
+    {
+        return $this->accountRepository->list();
+    }
 }

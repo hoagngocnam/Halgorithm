@@ -57,39 +57,32 @@
                             <th>Số thứ tự</th>
                             <th>Cửa hàng</th>
                             <th>Chủ sở hữu</th>
-                            <th>Màu sắc</th>
                             <th>Danh sách sản phẩm</th>
                             <th class="box-control">
-                                <a href="{{ route('admin.stores.add') }}" class="btn btn-success w-100" title="Thêm">
+                                <a href="{{ route('admin.shop.add') }}" class="btn btn-success w-100" title="Thêm">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </a>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($stores as $index => $store)
+                        @foreach ($shops as $index => $shop)
                             <tr>
-                                <td>{{ numeral($stores->currentPage(), $index, $stores->perPage()) }}</td>
-                                <td>{{ $store->name }}</td>
-                                <td>{{ $store->full_name }}</td>
+                                <td>{{ numeral($shops->currentPage(), $index, $shops->perPage()) }}</td>
+                                <td>{{ $shop->name }}</td>
+                                <td>{{ $shop->owner->full_name ?? null }}</td>
                                 <td>
-                                    <div
-                                        style="height: 25px;margin: auto;
-                                    width: 80px;background-color: {{ $store->background }}">
-                                    </div>
-                                </td>
-                                <td>
-                                    <a href="{{ route('admin.product.index', ['store_id' => $store->id]) }}"
+                                    <a href="{{ route('admin.product.list', ['shop_id' => $shop->id]) }}"
                                         class="btn btn-info">
                                         <i class="feather icon-list"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.stores.update', ['store_id' => $store->id]) }}"
+                                    <a href="{{ route('admin.shop.update', ['shop_id' => $shop->id]) }}"
                                         class="btn btn-primary">
                                         <i class="feather icon-edit"></i>
                                     </a>
-                                    <a href="{{ route('admin.stores.delete', ['store_id' => $store->id]) }}"
+                                    <a href="{{ route('admin.shop.delete', ['shop_id' => $shop->id]) }}"
                                         class="btn btn-danger">
                                         <i class="feather icon-trash-2"></i>
                                     </a>
@@ -100,7 +93,7 @@
                 </table>
             </div>
             <div class="box-pagination">
-                {{ $stores->links('admin::components.pagination') }}
+                {{ $shops->links('admin::components.pagination') }}
             </div>
         </div>
     </div>

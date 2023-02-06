@@ -16,6 +16,7 @@
         "nwidart/laravel-modules": "^9.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.8",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
@@ -32,7 +33,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "Modules/Admin/Config/env.php"
+            "Modules/Admin/Config/env.php",
+            "Modules/Admin/Helpers/Helpers.php"
         ]
     },
     "autoload-dev": {

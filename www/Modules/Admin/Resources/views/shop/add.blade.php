@@ -7,7 +7,7 @@
             <hr>
         </div>
         <div class="card-body">
-            <form class="validate-form" action="" method="POST" enctype="multipart/form-data">
+            <form class="validate-form" action="{{ route('admin.shop.add') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="row-input-group col-6 form-group">
@@ -29,17 +29,6 @@
                             @endforeach
                         </select>
                         @error('account_id')
-                            <p class="error-msg">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="row-input-group col-6 form-group">
-                        <label class="text-label">Màu nền</label>
-                        <i class="feather icon-star-on icon-required"></i>
-                        <input type="color" class="form-control" name="background" value="{{ old('background') }}"
-                            placeholder="Nhập họ . . ." />
-                        @error('background')
                             <p class="error-msg">{{ $message }}</p>
                         @enderror
                     </div>
