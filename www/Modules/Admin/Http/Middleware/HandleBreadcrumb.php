@@ -35,7 +35,7 @@ class HandleBreadcrumb
                     null => 'Add'
                 ];
                 break;
-            case "admin.category.index":
+            case "admin.category.list":
                 $breadcrumb = [
                     route('admin.dashboard') => 'home',
                     route('admin.account.list') => 'category',

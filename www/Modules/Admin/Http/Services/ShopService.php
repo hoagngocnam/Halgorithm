@@ -25,4 +25,19 @@ class ShopService
     {
         return $this->shopRepository->add($params);
     }
+
+    public function first(int $id): Shop
+    {
+        return $this->shopRepository->first($id);
+    }
+
+    public function update(int $id, $params): bool
+    {
+        return $this->shopRepository->update($id, $params);
+    }
+
+    public function logicDelete(int $id): bool
+    {
+        return $this->shopRepository->logicDelete($id);
+    }
 }

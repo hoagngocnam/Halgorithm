@@ -32,9 +32,9 @@ class BaseRepository implements BaseRepositoryInterface
         return $this->model::create($insert);
     }
 
-    public function update(array $conditions, array $update): bool
+    public function update(int $id, array $update): bool
     {
-        return $this->model::where($conditions)
+        return $this->model::where('id', $id)
             ->update($update);
     }
 

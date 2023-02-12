@@ -14,7 +14,7 @@ interface BaseRepositoryInterface
 
     public function add(array $insert): object;
 
-    public function update(array $conditions, array $update): bool;
+    public function update(int $id, array $update): bool;
 
     public function logicDelete(int $id): bool;
 

@@ -46,7 +46,7 @@ Route::prefix('admin')->middleware([
     Route::prefix('shop')->name('shop.')->group(function () {
         Route::get('list', 'ShopController@list')->name('list');
         Route::get('{shop_id}/information', 'ShopController@information')->name('information');
-        Route::get('add', 'ShopController@formAdd')->name('add');
+        Route::get('add', 'ShopController@add')->name('add');
         Route::post('add', 'ShopController@handleAdd')->name('add');
         Route::get('update/{shop_id}', 'ShopController@formUpdate')->name('update')->where('shop_id', '[0-9]+');
         Route::post('update/{shop_id}', 'ShopController@handleUpdate')->name('update')->where('shop_id', '[0-9]+');
@@ -56,7 +56,7 @@ Route::prefix('admin')->middleware([
     // Màn hình Category
     Route::prefix('category')->name('category.')->group(function () {
         Route::get('list', 'CategoryController@list')->name('list');
-        Route::get('add', 'CategoryController@formAdd')->name('add');
+        Route::get('add', 'CategoryController@add')->name('add');
         Route::post('add', 'CategoryController@handleAdd')->name('add');
         Route::get('update/{category_id}', 'CategoryController@formUpdate')->name('update')->where('id', '[0-9]+');
         Route::post('update/{category_id}', 'CategoryController@handleUpdate')->name('update')->where('id', '[0-9]+');
@@ -66,9 +66,11 @@ Route::prefix('admin')->middleware([
     // Màn hình Product
     Route::prefix('product')->name('product.')->group(function () {
         Route::get('list', 'ProductController@list')->name('list');
-        Route::match(['get', 'post'], 'add', 'ProductController@add')->name('add');
-        Route::match(['get', 'post'], '{product_id}/update', 'ProductController@update')->name('update');
-        Route::get('{product_id}/delete', 'ProductController@delete')->name('delete');
+        Route::get('add', 'ProductController@add')->name('add');
+        Route::post('add', 'ProductController@handleAdd')->name('add');
+        Route::get('update/{category_id}', 'ProductController@formUpdate')->name('update')->where('id', '[0-9]+');
+        Route::post('update/{category_id}', 'ProductController@handleUpdate')->name('update')->where('id', '[0-9]+');
+        Route::get('delete/{category_id}', 'ProductController@delete')->name('delete');
     });
 
     // Màn hình Multimedia

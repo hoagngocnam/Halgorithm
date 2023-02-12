@@ -4,7 +4,7 @@ namespace Modules\Admin\Http\Requests\Categories;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SearchInforRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.

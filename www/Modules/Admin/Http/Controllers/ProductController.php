@@ -6,22 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Modules\Admin\Http\Repositories\{CategoryRepository, ProductRepository, ShopRepository};
 use Modules\Admin\Http\Requests\ProductRequest;
-use Modules\Admin\Repositories\{CategoryRepository, ProductRepository, StoreRepository,};
 
 class ProductController extends Controller
 {
-    private StoreRepository $storeRepository;
+    private ShopRepository $shopRepository;
     private CategoryRepository $categoryRepository;
     private ProductRepository $productRepository;
 
     public function __construct(
-        StoreRepository    $storeRepository,
+        ShopRepository     $shopRepository,
         CategoryRepository $categoryRepository,
         ProductRepository  $productRepository
     )
     {
-        $this->storeRepository = $storeRepository;
+        $this->shopRepository = $shopRepository;
         $this->categoryRepository = $categoryRepository;
         $this->productRepository = $productRepository;
     }
@@ -29,16 +29,16 @@ class ProductController extends Controller
     /**
      * Màn hình danh sách sản phẩm
      */
-    public function index(ProductRequest $request)
+    public function list(ProductRequest $request)
     {
         $params = $request->only(['store_id', 'category_id', 'name']);
-        $stores = $this->storeRepository->list();
+        $shops = $this->shopRepository->list();
         $categories = $this->categoryRepository->list();
         $products = $this->productRepository->paginate($params);
 
-        return view('admin::product.index', compact(
+        return view('admin::product.list', compact(
             'params',
-            'stores',
+            'shops',
             'categories',
             'products',
         ));
@@ -71,7 +71,7 @@ class ProductController extends Controller
                     'title' => 'Thành công !',
                     'message' => $params['name']
                 ];
-                $redirect = redirect()->route('admin.product.index');
+                $redirect = redirect()->route('admin.product.list');
             } catch (\Exception $exception) {
                 $notification = [
                     'status' => NOTIFICATION['danger'],
@@ -121,7 +121,7 @@ class ProductController extends Controller
                 'title' => 'Thành công !',
                 'message' => $params['name']
             ];
-            return redirect()->route('admin.product.index');
+            return redirect()->route('admin.product.list');
             // } catch (\Exception $exception) {
             $notification = [
                 'status' => NOTIFICATION['danger'],
@@ -148,7 +148,7 @@ class ProductController extends Controller
     {
         $product = $this->productRepository->logicDelete($id);
 
-        return redirect()->route('admin.product.index');
+        return redirect()->route('admin.product.list');
     }
 
     public function chapterContent(Request $request, int $product_id, int $chapter_id)

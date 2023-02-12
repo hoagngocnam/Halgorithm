@@ -15,7 +15,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Tìm Kiếm</div>
                         <div class="panel-body">
-                            <form role="form" action="{{ route('admin.product.index') }}" method="GET">
+                            <form role="form" action="{{ route('admin.product.list') }}" method="GET">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6  form-group">
                                         <label>Tên truyện</label>

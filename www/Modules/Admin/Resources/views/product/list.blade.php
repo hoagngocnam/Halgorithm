@@ -1,21 +1,22 @@
 @extends('admin::layouts.main')
 
 @section('content')
+    @php dd($products); @endphp
     <div class="card">
         <div class="card-header">
             <h5>Tìm kiếm</h5>
             <hr>
         </div>
         <div class="card-body">
-            <form class="search-form" action="{{ route('admin.product.index') }}" method="GET" onsubmit="return searchForm()">
+            <form class="search-form" action="{{ route('admin.product.list') }}" method="GET" onsubmit="return searchForm()">
                 <div class="row">
                     <div class="row-input-group col-md-6 form-group">
                         <label class="text-label">Cửa hàng</label>
                         <br>
                         <select class="form-control select-custom" name="store_id">
                             <option value="" selected disabled>Chọn cửa hàng . . .</option>
-                            @foreach ($stores as $store)
-                                <option @selected(!empty($params['store_id']) && $store->id == $params['store_id']) value="{{ $store->id }}">{{ $store->name }}
+                            @foreach ($shops as $shop)
+                                <option @selected(!empty($params['store_id']) && $shop->id == $params['store_id']) value="{{ $shop->id }}">{{ $shop->name }}
                                 </option>
                             @endforeach
                         </select>

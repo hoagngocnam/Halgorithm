@@ -13,7 +13,7 @@
                     <div class="row-input-group col-6 form-group">
                         <label class="text-label">Danh mục</label>
                         <i class="feather icon-star-on icon-required"></i>
-                        <input type="text" class="form-control" name="mail_adr" value="{{ old('mail_adr') }}"
+                        <input type="text" class="form-control" name="name" value="{{ old('name') }}"
                             placeholder="Nhập địa chỉ mail . . ." />
                         @error('mail_adr')
                             <p class="error-msg">{{ $message }}</p>

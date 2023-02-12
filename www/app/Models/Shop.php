@@ -11,8 +11,6 @@ class Shop extends Model
 
     protected $table = 'shops';
     protected $primaryKey = 'id';
-    public $incrementing = true;
-    public $timestamps = true;
     protected $fillable = ['name'];
 
     public function owner()

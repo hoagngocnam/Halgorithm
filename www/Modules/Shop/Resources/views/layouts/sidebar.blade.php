@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.category.index') }}">
+                <a href="{{ route('admin.category.list') }}">
                     <i class="fa fa-th-list" aria-hidden="true"></i>
                     Danh mục
                 </a>

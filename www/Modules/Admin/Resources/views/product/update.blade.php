@@ -74,7 +74,7 @@
                     <button type="submit" class="btn btn-success font-weight-bold">
                         <i class="feather icon-check mr-2"></i>Hoàn thành
                     </button>
-                    <a href="{{ route('admin.product.index') }}" class="btn btn-danger font-weight-bold fa-pull-right">
+                    <a href="{{ route('admin.product.list') }}" class="btn btn-danger font-weight-bold fa-pull-right">
                         <i class="feather icon-rotate-ccw mr-2"></i>Quay lại
                     </a>
                 </div>

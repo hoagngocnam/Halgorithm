@@ -30,8 +30,6 @@ class AccountController extends Controller
     public function list(AccountRequest $request)
     {
         $parameters = $request->only(['mail_adr', 'full_name']);
-        // $accounts = $this->accountService->searchElasticsearch($parameters);
-        // dd($accounts);
         $accounts = $this->accountService->paginate($parameters);
 
         return view('admin::account.list', compact(
@@ -44,6 +42,37 @@ class AccountController extends Controller
      * Màn hình thêm tài khoản
      */
     public function add(AccountRequest $request)
+    {
+        if ($request->isMethod('post')) {
+            $params = $request->only(['mail_adr', 'first_name', 'last_name']);
+            $params['role'] = 1;
+            $password = $this->generatePassword();
+            $params['password'] = Hash::make($password);
+            try {
+                $account = $this->accountService->add($params);
+                $notification = [
+                    'status' => NOTIFICATION['success'],
+                    'title' => 'Success !'
+                ];
+                $targetRoute = redirect()->route('admin.account.list');
+            } catch (Exception $exception) {
+                $notification = [
+                    'status' => NOTIFICATION['danger'],
+                    'title' => 'Failure !'
+                ];
+                $targetRoute = back();
+            }
+            notification_message_settings($notification['status'], $notification['title'], $params['mail_adr']);
+            return $targetRoute;
+        }
+
+        return view('admin::account.add');
+    }
+
+        /*
+     * Màn hình thêm tài khoản
+     */
+    public function handleAdd(AccountRequest $request)
     {
         if ($request->isMethod('post')) {
             $params = $request->only(['mail_adr', 'first_name', 'last_name']);
