@@ -1,7 +1,6 @@
 @extends('admin::layouts.main')
 
 @section('content')
-    @php dd($products); @endphp
     <div class="card">
         <div class="card-header">
             <h5>Tìm kiếm</h5>

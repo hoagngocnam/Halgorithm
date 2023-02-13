@@ -28,27 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        $categories->load('products');
-        return view('users::home.index', compact(
-            'categories'
-        ));
-        SendMailReminder::dispatch();
-        die;
         $stores = $this->storeRepository->list();
-        $stores->load(['products' => function ($query) {
-            $query->select([
-                'store_id',
-                'id as product_id',
-                'category_id',
-                'name',
-                'original_price',
-                'promotional_price',
-                'rating',
-                'picture',
-                'is_exclusive',
-            ]);
-        }]);
         $categories = $this->categoryRepository->list();
 
         return view('users::home.index', compact(

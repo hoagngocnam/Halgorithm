@@ -2,7 +2,6 @@
 
 namespace Modules\Admin\Http\Repositories;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\{Product};
 use Modules\Admin\Http\Repositories\Interfaces\ProductRepositoryInterface;
 
@@ -10,17 +9,14 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 {
     protected $model;
 
-    public function __construct(
-        Product $model
-    )
+    public function __construct(Product $model)
     {
         $this->model = $model;
     }
 
     public function paginate(array $params = []): object
     {
-        $query = DB::table('products')->get();
-        dd($query);
+        $query = $this->model::query();
         if (!empty($params['shop_id'])) {
             $query->where('store_id', $params['store_id']);
         }

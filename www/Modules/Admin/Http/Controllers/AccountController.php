@@ -69,7 +69,7 @@ class AccountController extends Controller
         return view('admin::account.add');
     }
 
-        /*
+    /*
      * Màn hình thêm tài khoản
      */
     public function handleAdd(AccountRequest $request)
@@ -103,7 +103,6 @@ class AccountController extends Controller
     /*
      * Màn hình cập nhật tài khoản
      */
-
     private function generatePassword()
     {
         return uniqid('', true);
@@ -112,7 +111,6 @@ class AccountController extends Controller
     /*
      * Màn hình xóa tài khoản
      */
-
     public function delete(Request $request, int $account_id)
     {
         try {
@@ -122,6 +120,11 @@ class AccountController extends Controller
             notification_message_settings(NOTIFICATION['danger'], 'Failure !');
         }
         return back();
+    }
+
+    public function importCsv()
+    {
+
     }
 
     public function updateHistoryLogin(Request $request)

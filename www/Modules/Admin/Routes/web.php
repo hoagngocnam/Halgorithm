@@ -40,6 +40,9 @@ Route::prefix('admin')->middleware([
         Route::match(['get', 'post'], 'update/{account_id}', 'AccountController@update')->name('update');
         Route::get('delete/{account_id}', 'AccountController@delete')->name('delete');
         Route::get('export', 'AccountController@export')->name('export');
+        Route::prefix('csv')->name('csv.')->group(function () {
+            Route::get('import', 'AccountController@importCsv')->name('import');
+        });
     });
 
     // Màn hình Cửa hàng
@@ -51,6 +54,9 @@ Route::prefix('admin')->middleware([
         Route::get('update/{shop_id}', 'ShopController@formUpdate')->name('update')->where('shop_id', '[0-9]+');
         Route::post('update/{shop_id}', 'ShopController@handleUpdate')->name('update')->where('shop_id', '[0-9]+');
         Route::get('delete/{shop_id}', 'ShopController@delete')->name('delete')->where('shop_id', '[0-9]+');
+        Route::prefix('csv')->name('csv.')->group(function () {
+            Route::get('import', 'ShopController@importCsv')->name('import');
+        });
     });
 
     // Màn hình Category
@@ -61,6 +67,9 @@ Route::prefix('admin')->middleware([
         Route::get('update/{category_id}', 'CategoryController@formUpdate')->name('update')->where('id', '[0-9]+');
         Route::post('update/{category_id}', 'CategoryController@handleUpdate')->name('update')->where('id', '[0-9]+');
         Route::get('delete/{category_id}', 'CategoryController@delete')->name('delete');
+        Route::prefix('csv')->name('csv.')->group(function () {
+            Route::get('import', 'CategoryController@importCsv')->name('import');
+        });
     });
 
     // Màn hình Product
@@ -68,23 +77,18 @@ Route::prefix('admin')->middleware([
         Route::get('list', 'ProductController@list')->name('list');
         Route::get('add', 'ProductController@add')->name('add');
         Route::post('add', 'ProductController@handleAdd')->name('add');
-        Route::get('update/{category_id}', 'ProductController@formUpdate')->name('update')->where('id', '[0-9]+');
-        Route::post('update/{category_id}', 'ProductController@handleUpdate')->name('update')->where('id', '[0-9]+');
-        Route::get('delete/{category_id}', 'ProductController@delete')->name('delete');
+        Route::get('update/{product_id}', 'ProductController@formUpdate')->name('update')->where('id', '[0-9]+');
+        Route::post('update/{product_id}', 'ProductController@handleUpdate')->name('update')->where('id', '[0-9]+');
+        Route::get('delete/{product_id}', 'ProductController@delete')->name('delete');
+        Route::prefix('csv')->name('csv.')->group(function () {
+            Route::get('import', 'ProductController@importCsv')->name('import');
+        });
     });
 
     // Màn hình Multimedia
     Route::prefix('product/{product_id}/multimedia')->name('multimedia.')->group(function () {
         Route::match(['get', 'post'], '', 'MultimediaController@index')->name('index');
         Route::match(['get', 'post'], 'delete', 'MultimediaController@delete')->name('chapter.delete');
-    });
-
-    // Màn hình Author
-    Route::prefix('author')->name('author.')->group(function () {
-        Route::get('', 'AuthorController@index')->name('index');
-        Route::match(['get', 'post'], 'add', 'AuthorController@add')->name('add');
-        Route::match(['get', 'post'], 'update/{author_id}', 'AuthorController@update')->name('update');
-        Route::match(['get', 'post'], 'delete/{author_id}', 'AuthorController@delete')->name('delete');
     });
 
     Route::prefix('dev')->name('dev.')->group(function () {
